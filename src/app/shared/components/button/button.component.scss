@@ -1,0 +1,92 @@
+@import "/src/assets/styles/imports.scss";
+
+button {
+  @include defaultButton;
+
+  &.dark-gray {
+    background-color: $dark-gray;
+    color: $white;
+    -webkit-text-fill-color: $white;
+    border: none;
+
+    &:hover:not([disabled]) {
+      background-color: $dark-grayHover;
+    }
+
+    &:active:not([disabled]) {
+      background-color: $dark-grayActive;
+    }
+  }
+
+  &.light-gray {
+    @include lightGrayButton;
+  }
+
+  &.blue {
+    background-color: $blue;
+    color: $white;
+    -webkit-text-fill-color: $white;
+    border: none;
+
+    &:hover:not([disabled]) {
+      background-color: $blueSecond;
+    }
+
+    &:active:not([disabled]) {
+      background-color: $blueThird;
+    }
+  }
+
+  &.light-blue {
+    background-color: $lightBlue;
+    color: $white;
+    -webkit-text-fill-color: $white;
+    border: 1px solid $white;
+
+    mat-icon {
+      filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(84deg) brightness(108%) contrast(101%);
+    }
+  }
+}
+
+button.big {
+  @include bigButton;
+}
+
+button.medium {
+  font-weight: $medium;
+  font-size: $font-14;
+  line-height: 19px;
+  height: 40px;
+  padding: 10px;
+
+  mat-icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .left {
+    margin-right: 6px;
+  }
+}
+
+button.small {
+  font-weight: $thin;
+  font-size: $font-16;
+  line-height: 22px;
+  padding: 0 10px;
+  height: 35px;
+
+  mat-icon {
+    height: 16px;
+    width: 16px;
+  }
+
+  .left {
+    margin-right: 5px;
+  }
+}
+
+button.full-width {
+  width: 100%;
+}

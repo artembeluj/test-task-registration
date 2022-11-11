@@ -1,0 +1,57 @@
+@import "/src/assets/styles/imports.scss";
+
+.container {
+  padding: 0 7%;
+  position: relative;
+
+  .wrapper {
+    @include flex($justify: flex-start, $align: flex-start);
+    gap: 90px;
+    background-color: $white;
+    padding: 50px 50px 50px 52px;
+    margin: -30px auto 0;
+
+    @media (max-width: $mediaWidthSM) {
+      margin: -134px auto 0;
+    }
+
+    @media (max-width: $mediaWidthLG) {
+      flex-direction: column;
+      padding: 24px 20px 40px;
+      gap: 20px;
+    }
+
+    app-avatar {
+      display: block;
+      width: 319px;
+
+      @media (max-width: $mediaWidthLG) {
+        width: 100%;
+      }
+    }
+
+    form {
+      width: 100%;
+
+      .phone-number {
+        width: 100%;
+        @include flex($justify: flex-start, $align: flex-end);
+
+        app-form-select {
+          display: block;
+          width: 60px;
+        }
+
+        app-input {
+          width: 100%;
+        }
+      }
+    }
+
+    .actions {
+      padding-top: 12px;
+      width: 100%;
+      max-width: 150px;
+    }
+  }
+}

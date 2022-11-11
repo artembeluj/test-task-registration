@@ -1,0 +1,6 @@
+<button [disabled]="disabledButton" class="button {{ buttonSize }} {{ iconPosition }} {{ buttonColor }}"
+  [class.full-width]="isFullWidth" type="button">
+  <img [src]= " 'assets/images/' + icon + '.svg'"  *ngIf="icon && iconPosition === 'left'" [className]="iconPosition" >
+  {{ text }}
+  <img [src]= " 'assets/images/' + icon + '.svg'"  *ngIf="icon && iconPosition === 'right'" [className]="iconPosition" >
+</button>

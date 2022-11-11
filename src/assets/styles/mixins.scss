@@ -1,0 +1,39 @@
+@import 'containers.scss';
+
+@mixin flex($direction: row, $align: center, $justify: center) {
+  display: flex;
+  flex-direction: $direction;
+  align-items: $align;
+  justify-content: $justify;
+}
+
+@mixin defaultButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  transition: all .1s ease-in-out;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+@mixin bigButton {
+  font-weight: $bold;
+  font-size: 17px;
+  line-height: 23px;
+  padding: 0 32px;
+  height: 50px;
+
+  @media (max-width: $mediaWidthLG) {
+    flex-direction: column;
+    height: 40px;
+    font-size: $font-14;
+  }
+}
+
+@mixin lightGrayButton {
+  background-color: $lightGray;
+  color: $dark-gray;
+  -webkit-text-fill-color: $dark-gray;
+  border: 1px solid $lightGraySecond;
+}

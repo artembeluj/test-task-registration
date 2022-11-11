@@ -1,0 +1,50 @@
+@import "/src/assets/styles/imports.scss";
+
+::ng-deep {
+  .profile-creating-popup {
+    .mat-dialog-container {
+      max-width: 636px;
+      width: 100%;
+      background-color: $white;
+      padding: 0;
+      border-radius: 0;
+    }
+  }
+}
+
+:host {
+  display: block;
+  padding: 24px 29px 35px;
+
+  .header {
+    @include flex($justify: flex-end);
+    padding-bottom: 31px;
+
+    .title {
+      font-weight: 800;
+      font-size: $font-20;
+      line-height: 27px;
+      color: $dark-gray;
+      margin: 0 auto;
+    }
+
+    mat-icon {
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+  }
+
+  app-loading-spinner {
+    @include flex;
+  }
+
+  .description {
+    padding-top: 20px;
+    font-weight: $medium;
+    font-size: $font-16;
+    line-height: 25px;
+    color: $dark-gray;
+    text-align: center;
+  }
+}

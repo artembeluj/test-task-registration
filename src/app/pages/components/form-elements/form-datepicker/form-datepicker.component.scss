@@ -1,0 +1,16 @@
+@import "/src/assets/styles/imports.scss";
+
+:host::ng-deep {
+  .mat-datepicker-toggle {
+    color: $lightGrayThird;
+    -webkit-text-fill-color: $lightGrayThird;
+  }
+
+  .mat-focused,
+  .is-opened {
+    .mat-datepicker-toggle {
+      color: $dark-gray;
+      -webkit-text-fill-color: $dark-gray;
+    }
+  }
+}

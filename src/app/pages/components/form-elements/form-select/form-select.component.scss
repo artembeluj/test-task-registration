@@ -1,0 +1,25 @@
+@import "/src/assets/styles/imports.scss";
+
+:host::ng-deep {
+  .mat-select-value-text {
+    font-size: $font-16;
+    line-height: 16px;
+    color: $dark-gray;
+    -webkit-text-fill-color: $dark-gray;
+  }
+
+  .mat-select-arrow {
+    color: $dark-gray;
+    -webkit-text-fill-color: $dark-gray;
+    margin-top: 11px;
+  }
+
+  mat-select {
+    height: 23px;
+  }
+
+  img {
+    width: 10px;
+    height: 10px;
+  }
+}

@@ -1,0 +1,26 @@
+@import "/src/assets/styles/imports.scss";
+
+:host {
+  @include flex($align: flex-start, $justify: flex-start);
+  gap: 14px;
+
+  mat-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .title {
+    font-weight: $thin;
+    font-size: $font-16;
+    line-height: 22px;
+    color: $dark-graySecond;
+  }
+
+  .value {
+    font-weight: $bold;
+    font-size: 18px;
+    line-height: 25px;
+    color: $dark-gray;
+    padding-top: 2px;
+  }
+}

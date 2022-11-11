@@ -1,0 +1,94 @@
+@import "/src/assets/styles/imports.scss";
+
+:host::ng-deep {
+
+  .text-input-container {
+    width: 100%;
+
+    .title {
+      color: $dark-gray;
+      font-weight: $thin;
+      font-size: $font-16;
+      line-height: 22px;
+
+      @media (max-width: $mediaWidthLG) {
+        font-weight: $bold;
+      }
+
+      .is-required {
+        color: $red;
+        font-weight: $medium;
+      }
+    }
+
+    input {
+      height: 24px;
+      font-size: $font-16;
+      line-height: 16px;
+      color: $dark-gray;
+      -webkit-text-fill-color: $dark-gray;
+
+      &:focus {
+        color: $dark-gray;
+        -webkit-text-fill-color: $dark-gray;
+      }
+
+      &::placeholder {
+        font-size: $font-16;
+        color: $lightGrayThird;
+        -webkit-text-fill-color: $lightGrayThird;
+        opacity: 1;
+      }
+
+      &:disabled {
+        color: $dark-gray;
+        -webkit-text-fill-color: $dark-gray;
+      }
+    }
+
+    .mat-form-field-ripple {
+      display: none !important;
+    }
+
+    .mat-form-field-suffix {
+      mat-icon {
+        width: 16px;
+        height: 26px;
+        padding-right: 12px;
+      }
+    }
+
+    .mat-form-field {
+      width: 100% !important;
+      padding: 0;
+      max-width: 100%;
+
+      .mat-form-field-outline {
+        border-radius: 0;
+        border: 1px solid $lightGraySecond;
+        color: transparent !important;
+        height: 100%;
+      }
+
+      .mat-form-field-infix {
+        padding: 20px 0 7px 0px;
+        border: none;
+      }
+
+      &.mat-focused .mat-form-field-outline {
+        border: 1px solid $dark-gray;
+      }
+
+      &.mat-form-field-disabled .mat-form-field-outline {
+        background-color: $gray-third;
+      }
+
+      &.mat-form-field-invalid.ng-dirty,
+      &.error {
+        .mat-form-field-outline {
+          border: 1px solid $red;
+        }
+      }
+    }
+  }
+}

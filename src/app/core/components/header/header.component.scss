@@ -1,0 +1,280 @@
+@import "/src/assets/styles/imports.scss";
+
+
+.header {
+  @include flex($justify: space-between);
+  height: 78px;
+  padding: 0 7%;
+  margin: 0 auto;
+  background-color: $white;
+  font-family: $main-font;
+  font-weight: $thin;
+
+  @media screen and (min-width: $mediaWidthSM) {
+    max-width: 1440px;
+    justify-content: space-between;
+  }
+
+  &-logo {
+    .logo {
+      width: 119px;
+      height: 33px;
+      padding: 19px 0 17px 0;
+    }
+  }
+
+  .menu-button {
+    @include flex($justify: space-around);
+    padding: 0;
+  }
+
+  .menu-link {
+    @include flex($justify: space-around);
+
+    li {
+      padding: 10px;
+      margin-right: 10px;
+      white-space: nowrap;
+    }
+  }
+
+  .user-info {
+    @include flex($justify: space-around);
+
+    .user-avatar,
+    .empty-user {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: 5px;
+      padding: 0;
+    }
+
+    .empty-user-header {
+      display: block;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .empty-user {
+      @include flex;
+      background-color: $gray-third;
+
+      mat-icon {
+        color: $graySecond;
+        width: 22px;
+        height: 22px;
+      }
+    }
+
+    .user-name {
+      display: block;
+      padding: 0;
+      margin-right: 10px;
+    }
+
+    .menu-icon {
+      padding-right: 20px;
+      width: 10px;
+      cursor: pointer;
+    }
+  }
+
+  .menu-button app-button {
+    margin-right: 10px;
+    display: block;
+  }
+
+  .search-icon {
+    width: 19px;
+  }
+
+  &-menu {
+    @include flex($justify: space-around);
+    font-size: 14px;
+
+    @media screen and (max-width: $mediaWidthSM) {
+      display: none;
+    }
+
+    &.right-menu {
+      @include flex($direction: column, $align: flex-start, $justify: flex-start);
+      z-index: 999;
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      padding: 20px;
+      background-color: $graySecond;
+      animation: moveToLeft 500ms linear;
+
+      @keyframes moveToLeft {
+        0% {
+          transform: translateX(100%);
+        }
+
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      .close-btn {
+        background-color: $graySecond;
+        border: none;
+        font-weight: 700;
+        color: $dark-gray;
+        order: 0;
+      }
+
+      .navigate-btn {
+        order: 1;
+
+        button {
+          @include flex($justify: flex-start);
+          font-size: 18px;
+          color: $dark-gray;
+          padding: 10px;
+        }
+      }
+
+      .menu-link {
+        flex-direction: column;
+        padding: 0 0 10px;
+        margin: 0;
+        font-size: 18px;
+        order: 2;
+      }
+
+      .menu-button {
+        flex-direction: column;
+        order: 2;
+
+        li {
+          margin-bottom: 10px;
+        }
+      }
+
+      .user-info {
+        margin-top: 10px;
+        order: 1;
+      }
+
+      .header-search {
+        padding: 0;
+        order: 2;
+      }
+    }
+
+    &-mobile {
+      @include flex($justify: flex-end);
+      width: 100%;
+      margin: 0 auto;
+
+      @include for-phone {
+        display: none;
+      }
+    }
+  }
+}
+
+::ng-deep .desktop-menu {
+  width: fit-content;
+  border-radius: 0 !important;
+  background: $white;
+
+  .mat-menu-content {
+    padding: 0 !important;
+  }
+
+  button {
+    @include flex($justify: flex-start);
+    color: $dark-gray  !important;
+    padding: 8px 15px;
+    min-width: 185px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    border-bottom: 1px solid #EDEDED;
+    background-color: $white;
+
+
+    &:last-child {
+      border: none;
+    }
+
+  }
+}
+
+.header-links-invisible {
+  display: none;
+}
+
+.burger-button {
+  display: none;
+}
+
+.link-mobile {
+  display: none;
+}
+
+@media screen and (max-width: $mediaWidthSM) {
+
+  .links-mobile {
+    margin: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background-color: $white;
+    z-index: 9;
+    box-shadow: $box-shadow-header;
+    padding: 5px 12px;
+    align-items: left;
+
+    @include for-phone {
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    @include for-small-phone {
+      max-width: 90%;
+      margin: 0;
+    }
+  }
+
+  .link-mobile {
+    display: flex;
+    font-weight: $medium;
+    color: $dark-gray;
+    transition: all 0.3s ease-out 0s;
+    padding: 10px 0;
+    position: relative;
+    font-family: $main-font;
+    text-decoration: none;
+  }
+
+  .link-mobile:hover {
+    color: $blue;
+    text-decoration: underline;
+  }
+
+  @include for-phone {
+    .menu-link {
+      display: none;
+    }
+
+    .burger-button {
+      display: block;
+    }
+
+    .icon-bar {
+      width: 30px;
+      height: 2px;
+      margin: 8px;
+      background-color: black;
+      position: relative;
+    }
+  }
+}

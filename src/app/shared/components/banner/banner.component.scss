@@ -1,0 +1,101 @@
+@import "/src/assets/styles/imports.scss";
+
+:host {
+  .wrapper {
+    @include flex;
+    background: $backgroundGradient;
+    padding: 0 7% 0;
+    position: relative;
+
+    &.default {
+      height: 139px;
+
+      @media (max-width: $mediaWidthSM) {
+        height: 227px;
+      }
+    }
+
+    &.big {
+      height: 261px;
+
+      @media (max-width: $mediaWidthSM) {
+        height: 290px;
+      }
+    }
+
+    &.lg {
+      app-button {
+        display: none;
+
+        @media (max-width: $mediaWidthLG) {
+          display: block;
+          position: absolute;
+          top: 12px;
+          right: 7%;
+        }
+      }
+    }
+
+    &-content {
+      @include flex($justify: space-between, $align: flex-start);
+      height: 100%;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 1440px;
+      padding-top: 36px;
+
+      @media (max-width: $mediaWidthSM) {
+        @include flex($align: flex-start);
+        height: 100%;
+        padding-top: 31px;
+      }
+
+      .title {
+        font-weight: $bold;
+        font-size: $font-24;
+        line-height: 33px;
+        color: $white;
+        -webkit-text-fill-color: $white;
+      }
+
+      mat-list {
+        @include flex;
+        padding-top: 0;
+
+        @media (max-width: $mediaWidthSM) {
+          display: none;
+        }
+
+        .mat-list-item {
+          width: fit-content;
+          height: fit-content;
+
+          ::ng-deep.mat-list-item-content {
+            padding: 0;
+          }
+
+          .text {
+            font-weight: $thin;
+            font-size: $font-14;
+            line-height: 19px;
+            color: $white;
+
+            &.inactive {
+              cursor: pointer;
+
+              &:hover {
+                text-decoration: underline;
+              }
+            }
+          }
+
+          .separator {
+            padding-left: 8px;
+            padding-right: 4px;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

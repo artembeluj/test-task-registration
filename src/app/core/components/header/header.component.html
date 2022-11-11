@@ -1,0 +1,84 @@
+<div class="header">
+    <div class="header-logo">
+      <img src="assets/images/logo.svg">
+      <div [class.header-links-invisible]="shouldHideMobileLinks">
+        <div class="links-mobile">
+            <a class="link-mobile">
+                About Us
+            </a>
+            <a class="link-mobile">
+                Pricing
+            </a>
+            <a class="link-mobile">
+                Sign in/Registartion
+            </a>
+        </div>
+    </div>
+    </div>
+
+    <div class="header-menu">
+      <ng-container *ngTemplateOutlet="menu"></ng-container>
+    </div>
+
+    <div (click)="toggleMobileHeader()" class="burger-button">
+        <div class="icon-bar" [@hamburguerX]="shouldHideMobileLinks ? 'hamburguer' : 'topX'"></div>
+        <div class="icon-bar" [@hamburguerX]="shouldHideMobileLinks ? 'hamburguer' : 'hide'"></div>
+        <div class="icon-bar" [@hamburguerX]="shouldHideMobileLinks ? 'hamburguer' : 'bottomX'"></div>
+    </div>
+
+    <div class="header-menu right-menu" *ngIf="isShowMenu">
+      <button class="close-btn" (click)="toggleMobileMenu()">X</button>
+      <ng-container *ngTemplateOutlet="menu"></ng-container>
+    </div>
+  </div>
+
+  <ng-template #menu>
+    <ul class="menu-link">
+      <li>About Us</li>
+      <li>Pricing</li>
+    </ul>
+
+    <div class="user-info" *ngIf="(userData$ | async) as user; else loginBtn">
+      <div *ngIf="!user.userPhoto" class="empty-user">
+       <img class="empty-user-header" src="assets/images/empty-user-header.svg">
+      </div>
+      <img *ngIf="user.userPhoto" [src]="user.userPhoto" class="user-avatar" alt="">
+      <span class="user-name">{{ user.userName | userName }}</span>
+      <img src="assets/images/arrow-down.svg" *ngIf="!isShowMenu" class="menu-icon" [matMenuTriggerFor]="menu">
+
+      <mat-menu #menu="matMenu" xPosition="before" class="desktop-menu">
+        <ng-container *ngTemplateOutlet="navigateBtn"></ng-container>
+      </mat-menu>
+
+    </div>
+    <div class="navigate-btn" *ngIf="isShowMenu">
+      <ng-container *ngTemplateOutlet="navigateBtn"></ng-container>
+    </div>
+
+    <div class="header-search">
+      <img src="assets/images/search.svg">
+    </div>
+  </ng-template>
+
+  <ng-template #navigateBtn>
+    <button mat-menu-item [routerLink]="['/profile']">
+      Profile
+    </button>
+    <button mat-menu-item [routerLink]="['/profile/edit']">
+      Edit profile
+    </button>
+    <button mat-menu-item (click)="logout()">
+      Logout
+    </button>
+  </ng-template>
+
+  <ng-template #loginBtn>
+    <ul class="menu-button">
+      <li>
+        <app-button [text]="'Sign In'" [buttonSize]="buttonSize" [buttonColor]="buttonColor"></app-button>
+      </li>
+      <li>
+        <app-button [text]="'Registration'" [buttonSize]="buttonSize" [buttonColor]="buttonColor"></app-button>
+      </li>
+    </ul>
+  </ng-template>

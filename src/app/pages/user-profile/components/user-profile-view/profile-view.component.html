@@ -1,0 +1,36 @@
+<app-banner (onClick)="navigateToEdit()" [titleSize]="titleSize" [buttonText]="'Edit Profile'" [buttonIcon]="'edit'"></app-banner>
+
+<div class="container" *ngIf="(userData$ | async) as user">
+  <div class="wrapper wrapper-photo">
+    <ng-container *ngTemplateOutlet="userPhoto"></ng-container>
+
+    <app-button (click)="navigateToEdit()" [icon]="'edit'" [buttonColor]="buttonColor" [text]="'Edit Profile'"></app-button>
+  </div>
+  <div class="wrapper wrapper-info">
+    <div class="user-photo">
+    <ng-container *ngTemplateOutlet="userPhoto"></ng-container>
+    </div>
+    <div class="header">
+      Profile Info
+    </div>
+    <div class="user-info">
+      <app-details-user [icon]="'empty-user-small'" [title]="'Username'" [value]="user.userName"></app-details-user>
+      <app-details-user [icon]="'email'" [title]="'Email'" [value]="user.email"></app-details-user>
+      <app-details-user [icon]="'phone-alt'" [title]="'Phone'" [value]="user.codeCountry.value + ' ' + user.phone"></app-details-user>
+      <app-details-user [icon]="'calendar'" [title]="'Birthdate'" [value]="(user.birthDate | date: 'MM/dd/YYYY')!"></app-details-user>
+      <app-details-user [icon]="'location'" [title]="'Country'" [value]="user.country"></app-details-user>
+      <app-details-user [icon]="'website'" [title]="'Website'" [value]="user.webSite"></app-details-user>
+    </div>
+  </div>
+
+  <ng-template #userPhoto>
+    <div *ngIf="!user.userPhoto" class="empty-user">
+      <img class="user" src="assets/images/empty-user.svg">
+    </div>
+    <img *ngIf="user.userPhoto" [src]="user.userPhoto" alt="Profile Picture" class="profile-picture">
+
+    <div class="user-name">
+      {{ user.userName }}
+    </div>
+  </ng-template>
+</div>

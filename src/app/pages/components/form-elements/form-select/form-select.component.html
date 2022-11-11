@@ -1,0 +1,10 @@
+<div class="text-input-container">
+  <div class="title" *ngIf="title">{{ title }}<span *ngIf="isRequired" class="is-required">*</span></div>
+  <mat-form-field [class.error]="isError" appearance="outline">
+    <mat-select [compareWith]="compareObjects" [disabled]="!!disabled" [(ngModel)]="value">
+      <mat-option [value]="flag" *ngFor="let flag of flags">{{ flag.title }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</div>
+

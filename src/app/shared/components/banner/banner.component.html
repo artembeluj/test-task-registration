@@ -1,0 +1,12 @@
+<div class="wrapper {{ titleSize }} {{ buttonShowOnMedia }}">
+  <div class="wrapper-content">
+    <div class="title">{{ title }}</div>
+    <app-button *ngIf="buttonText" (click)="onClick.emit()" [icon]="buttonIcon" [text]="buttonText" [buttonSize]="buttonSize" [buttonColor]="buttonColor"></app-button>
+    <mat-list>
+      <mat-list-item *ngFor="let breadcrumb of breadcrumbList">
+        <span class="text" [class.inactive]="breadcrumb.path" [routerLink]="breadcrumb.path">{{ breadcrumb.name }}</span>
+        <span class="separator" *ngIf="breadcrumb.path">></span>
+      </mat-list-item>
+    </mat-list>
+  </div>
+</div>

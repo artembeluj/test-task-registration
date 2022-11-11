@@ -1,0 +1,2 @@
+<app-profile-data *ngIf="(userData$ | async) as user" (onSave)="update($event)" [user]="user" [title]="user.userName">
+</app-profile-data>

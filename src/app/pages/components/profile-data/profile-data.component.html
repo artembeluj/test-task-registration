@@ -1,0 +1,33 @@
+<app-banner [title]="title" [breadcrumbList]="breadcrumbs"></app-banner>
+
+<div class="container">
+  <div class="wrapper">
+    <app-avatar [avatar]="user?.userPhoto || ''" (emitPhoto)="setUserPhoto($event)">
+    </app-avatar>
+    <form [formGroup]="userForm">
+      <app-input [isError]="!!(userForm.get('userName')?.invalid && userForm.get('userName')?.dirty)"
+        [isRequired]="true" formControlName="userName" [title]="'Username'" [placeholder]="'Jon Doe'"></app-input>
+      <app-input (click)="!!user && showError()" [icon]="!!user ? '' : ''" [disabled]="!!user"
+        [isError]="!!(userForm.get('email')?.invalid && userForm.get('email')?.dirty)" formControlName="email"
+        [isRequired]="true" [title]="'Email'" [placeholder]="'Eg: johndoe@gmail.com'"></app-input>
+      <div class="phone-number">
+        <app-form-select (click)="!!user && showError()" [disabled]="!!user" [isRequired]="true"
+          formControlName="codeCountry" [title]="'Phone'"></app-form-select>
+        <app-input (click)="!!user && showError()" [icon]="!!user ? 'lock' : ''" [disabled]="!!user"
+          [isError]="!!(userForm.get('phone')?.invalid && userForm.get('phone')?.dirty)" formControlName="phone"
+          [mask]="'000-000-000'" [placeholder]="'000-000-000'"></app-input>
+      </div>
+      <app-form-datepicker formControlName="birthDate"
+        [isError]="!!(userForm.get('birthDate')?.invalid && userForm.get('birthDate')?.dirty)" [isRequired]="true"
+        [title]="'Birth date'" [placeholder]="'DD/MM/YYYY'"></app-form-datepicker>
+      <app-form-autocomplete [isError]="!!(userForm.get('country')?.invalid && userForm.get('country')?.dirty)"
+        formControlName="country" [isRequired]="true" formControlName="country" [parameters]="(filteredNames$ | async)!"
+        [title]="'Country'" [placeholder]="'Select country'"></app-form-autocomplete>
+      <app-input formControlName="webSite" [title]="'Website'" [placeholder]="'www.websitename.com'"></app-input>
+      <div class="actions">
+        <app-button (click)="save()" [isFullWidth]="true" [text]="user ? 'Update': 'Save'" [buttonColor]="buttonColor" [buttonSize]="buttonSize">
+        </app-button>
+      </div>
+    </form>
+  </div>
+</div>

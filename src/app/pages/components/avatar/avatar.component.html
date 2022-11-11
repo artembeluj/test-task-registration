@@ -1,0 +1,22 @@
+<div class="picture-container">
+  <div class="title">Profile picture</div>
+  <div *ngIf="!avatar" class="empty-user">
+    <img class="user" src="assets/images/empty-user.svg">
+  </div>
+  <div *ngIf="avatar" class="image-container">
+    <img [src]="avatar" alt="Profile Picture" class="profile-picture">
+    <img (click)="deletePhoto()" src="assets/images/delete.svg" class="delete"> 
+  </div>
+
+  <button>
+    <title for="files">Upload Profile Picture</title>
+    <input (change)="choosePhoto($event)" id="files" type="file" [accept]="possibleFormats">
+  </button>
+
+  <div class="description">
+    <span>upload a new avatar. Large image will be resized automatically.</span>
+    <span>Maximum upload size is <span class="bold">{{maxFileSize}} MB</span></span>
+  </div>
+</div>
+
+

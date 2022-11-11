@@ -1,0 +1,112 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+@import "/src/assets/styles/imports.scss";
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$tech-rise-primary: mat.define-palette(mat.$indigo-palette);
+$tech-rise-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$tech-rise-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$tech-rise-theme: mat.define-light-theme((color: (primary: $tech-rise-primary,
+				accent: $tech-rise-accent,
+				warn: $tech-rise-warn,
+			)));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($tech-rise-theme);
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700&display=swap');
+@import "/src/assets/styles/imports.scss";
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	background-color: $gray;
+	margin: 0;
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+button {
+	font-family: 'Nunito Sans', sans-serif;
+}
+
+li {
+	list-style: none;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.ngx-toastr {
+	top: 0 !important;
+	width: 100vw !important;
+	border-radius: 3px 3px 3px 3px;
+	background-position: 15px center;
+	background-repeat: no-repeat;
+	background-size: 24px;
+	box-shadow: 0 0 12px #999999;
+	color: #FFFFFF;
+	@media screen and (min-width: $mediaWidthESM) {
+		width: 350px !important;
+	  }
+}
+
+.toast-center-center {
+	top: 35px !important;
+	@media screen and (min-width: $mediaWidthESM) {
+		top: 65px !important;
+	  }
+}
+
+.toast-success {
+	background-color: #1EB03E !important;
+	background-image: url("assets/images/alert-success.svg");
+}
+
+.toast-error {
+	background-color: #FF2E00 !important;
+	background-image: url("assets/images/alert-error.svg");
+}
+
+.toast-container .toast-close-button {
+    margin-top: 10px !important;
+	margin-right: 10px !important;
+  }
+
+.message-wrapper {
+	text-align: center !important;
+	width: 90%;
+	margin-top: 10px;
+	padding-right: 70px;
+	border-right: 1px solid white !important;
+}
+
+.error-message-wrapper {
+	width: 90% !important;
+	padding: 0 !important;
+	border-right: 1px solid white !important;
+}

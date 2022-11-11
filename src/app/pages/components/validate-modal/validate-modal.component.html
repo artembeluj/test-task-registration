@@ -1,0 +1,12 @@
+<div class="backdrop is-hidden">
+    <div class="validationModal">
+        <mat-icon class="close-btn" (click)="closeModal()">close-icon</mat-icon>
+        <span class="header-modal">One Last Step!</span>
+        <div class="text-modal"><span>Enter 6 digit one time password (OTP) sent to your mobile number or email address to verify your details.</span></div>
+        <form class="form-modal">
+            <app-input [title]="'OTP'" class="input-modal"></app-input>
+            <span class="notice-modal">Resend OTP in 01:59</span>
+            <app-button [text]="'Validate OTP'" [isFullWidth]="true" class="blue"  [buttonSize]="buttonSize" (click)="closeModal()"></app-button>
+        </form>
+    </div>
+</div>

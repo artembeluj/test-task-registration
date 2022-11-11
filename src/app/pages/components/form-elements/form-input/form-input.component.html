@@ -1,0 +1,8 @@
+<div class="text-input-container">
+  <div class="title" *ngIf="title">{{ title }}<span *ngIf="isRequired" class="is-required">*</span></div>
+  <mat-form-field [class.error]="isError" appearance="outline">
+    <img [src]= " 'assets/images/' + icon + '.svg'" matSuffix *ngIf="!!icon">
+    <input [mask]="mask" [dropSpecialCharacters]="false" [disabled]="!!disabled" [placeholder]="placeholder"
+      [ngModel]="value" (ngModelChange)="onChange($event.trim())" matInput type="text" />
+  </mat-form-field>
+</div>
